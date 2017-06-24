@@ -25,8 +25,10 @@ public class Program1 extends AbstractProgram1 {
      * Stable Matching problem. Study the description of a Matching in the
      * project documentation to help you with this.
      */
-    public boolean isStableMatching(Matching given_matching) {
-        /* TODO implement this function */
+    public boolean isStableMatching(Matching given_matching){
+        given_matching.getLandlordOwners();
+
+
         return false; /* TODO remove this line */
     }
 
