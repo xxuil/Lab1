@@ -24,17 +24,13 @@ public class Program1 extends AbstractProgram1 {
      * Stable Matching problem. Study the description of a Matching in the
      * project documentation to help you with this.
      */
-    public boolean isStableMatching(Matching given_matching){
-        if(given_matching.getTenantCount() != given_matching.getTenantMatching().size()){
-            return false;
-        }
+    public boolean isStableMatching(Matching match){
 
-        for(int i = 0; i < given_matching.getLandlordCount(); i++){
+        for(int i = 0; i < match.getTenantCount(); i++){
 
-        }
+            for(int j = 0; j < match.getTenantCount(); j++){
 
-        for(int i = 0; i < given_matching.getTenantCount(); i++){
-
+            }
         }
 
         return false; /* TODO remove this line */
@@ -108,9 +104,6 @@ public class Program1 extends AbstractProgram1 {
         return newMatch;
     }
 
-
-
-
     private static Apartment findFree(int number, ArrayList<Apartment> ApartmentList){
         for(int i = 0; i < ApartmentList.size(); i++){
             if(ApartmentList.get(i).getNumber() == number){
@@ -120,7 +113,6 @@ public class Program1 extends AbstractProgram1 {
 
         return null;
     }
-
 
     private static void createLists(Queue<Tenant> FreeTenants, ArrayList<Tenant> Tenants, ArrayList<Apartment> ApartmentList, Matching match){
         for(int i = 0; i < match.getTenantCount(); i++) {
