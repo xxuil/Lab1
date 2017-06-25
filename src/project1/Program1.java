@@ -55,7 +55,7 @@ public class Program1 extends AbstractProgram1 {
 
         //create all lists and set all free
         createLists(FreeTenant, TenantList, ApartmemtList, match);
-        HashMap<Tenant, Apartment> MatchMap = new HashMap<Tenant, Apartment>();
+        //HashMap<Tenant, Apartment> MatchMap = new HashMap<Tenant, Apartment>();
         //HashMap<Apartment, Tenant> ApartmentMap = new HashMap<Apartment, Tenant>();
 
         int index = 0;
@@ -69,7 +69,7 @@ public class Program1 extends AbstractProgram1 {
             //check if the apartment is free
             if(tempApartment.isFree()){
                 //if free then assign A to this tempTanent
-                MatchMap.put(tempTanent, tempApartment);
+                //MatchMap.put(tempTanent, tempApartment);
                 tempTanent.setMatch(tempApartment);
                 tempApartment.setMatch(tempTanent);
             }
@@ -80,7 +80,7 @@ public class Program1 extends AbstractProgram1 {
 
                 if(tempApartment.getPrefLevel(checkTanent) > tempApartment.getPrefLevel(tempTanent)){
                     //if the landlord of this apartment prefers this tempTenant
-                    MatchMap.remove(checkTanent);
+                    //MatchMap.remove(checkTanent);
                     FreeTenant.offer(checkTanent);
                     tempApartment.setMatch(tempTanent);
                     tempTanent.setMatch(tempApartment);
@@ -107,13 +107,6 @@ public class Program1 extends AbstractProgram1 {
 
         return newMatch;
     }
-
-    private static boolean isPreferedTenant(Tenant tenant, Apartment apartment){
-
-
-        return false;
-    }
-
 
 
 

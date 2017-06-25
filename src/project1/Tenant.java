@@ -53,8 +53,8 @@ public class Tenant {
 
         aList.sort((a1, a2) -> (getPrefLevel(a1)).compareTo(getPrefLevel(a2)));
 
-        for(int i = 0; i < preference.size(); i++){
-            this.preference.offer(i);
+        for(Integer a: aList){
+            this.preference.offer(a);
         }
     }
 
