@@ -36,7 +36,7 @@ public class Tenant {
      * @param input number of apartment
      * @return  tenant's preference level of input apartment
      */
-    private Integer getPrefLevel(int input) {
+    public Integer getPrefLevel(int input) {
         return prefList.get(input);
     }
 

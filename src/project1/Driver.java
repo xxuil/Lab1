@@ -102,16 +102,22 @@ public class Driver {
         boolean isStable;
 
         if (testGS) {
+            long startTime = System.nanoTime();
             Matching GSMatching = program.stableMatchingGaleShapley(problem);
+            long estimatedTime = (System.nanoTime() - startTime);
             System.out.println(GSMatching);
+            System.out.println(estimatedTime);
             isStable = program.isStableMatching(GSMatching);
             System.out.printf("%s: stable? %s\n", "Gale-Shapley", isStable);
             System.out.println();
         }
 
         if (testBruteForce) {
+            long startTime = System.nanoTime();
             Matching BFMatching = program.stableMatchingBruteForce(problem);
+            long estimatedTime = (System.nanoTime() - startTime);
             System.out.println(BFMatching);
+            System.out.println(estimatedTime);
             isStable = program.isStableMatching(BFMatching);
             System.out.printf("%s: stable? %s\n", "Brute Force", isStable);
             System.out.println();

@@ -1,5 +1,6 @@
 package project1;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -25,6 +26,11 @@ public class Apartment {
     }
 
 
+    public void setPrefList(ArrayList<Integer> list){
+        this.prefList = new ArrayList<Integer>(list);
+    }
+
+
     public void setMatch(Tenant tenant){
         this.match = tenant;
         this.isFree = false;
@@ -32,6 +38,16 @@ public class Apartment {
 
     public Tenant getMatch(){
         return this.match;
+    }
+
+    public ArrayList<Integer> getPrefList(){
+        return this.prefList;
+    }
+
+    public Apartment(int input){
+        this.number = input;
+        this.prefList = null;
+        this.isFree = true;
     }
 
     public Apartment(int input, Vector<Integer> preference){

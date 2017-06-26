@@ -26,14 +26,46 @@ public class Program1 extends AbstractProgram1 {
      */
     public boolean isStableMatching(Matching match){
 
-        for(int i = 0; i < match.getTenantCount(); i++){
+        //Lists initialization
+        ArrayList<Tenant> TenantList = new ArrayList<Tenant>();
+        ArrayList<Apartment> ApartmemtList = new ArrayList<Apartment>();
+        Queue<Tenant> FreeTenant = new LinkedList<Tenant>();
+
+        //create all lists and set all free
+        createLists(FreeTenant, TenantList, ApartmemtList, match);
+
+        for(int i = 0; i < match.getTenantMatching().size(); i++) {
+            int index = match.getTenantMatching().get(i);
+            Tenant tenant = TenantList.get(i);
+            Apartment apartment = ApartmemtList.get(index);
+            tenant.setMatch(apartment);
+            apartment.setMatch(tenant);
+        }
+
+        for (int i = 0; i < match.getTenantCount(); i++) {
+            Tenant tenant = TenantList.get(i);
+            Apartment apartment = tenant.getMatch();
+            ArrayList<Apartment> TestList = new ArrayList<Apartment>();
 
             for(int j = 0; j < match.getTenantCount(); j++){
+                Apartment checkApartment = new Apartment(j);
+                
+                if(tenant.getPrefLevel(checkApartment.getNumber()) < tenant.getPrefLevel(apartment.getNumber())){
+                    checkApartment.setPrefList(ApartmemtList.get(j).getPrefList());
+                    TestList.add(checkApartment);
+                }
+            }
 
+            for (int k = 0; k < TestList.size(); k++) {
+                Apartment testApartment = TestList.get(k);
+                Tenant test = ApartmemtList.get(testApartment.getNumber()).getMatch();
+                if(testApartment.getPrefLevel(tenant) < testApartment.getPrefLevel(test)){
+                    return false;
+                }
             }
         }
 
-        return false; /* TODO remove this line */
+        return true;
     }
 
     /**
@@ -133,7 +165,5 @@ public class Program1 extends AbstractProgram1 {
             }
         }
         //finish creating the lists, return
-
-
     }
 }
